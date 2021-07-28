@@ -1,0 +1,109 @@
+[alias]
+
+	# Most frequent commands.
+
+	a = add
+	b = branch
+	c = commit
+	d = diff
+	f = fetch
+	g = grep
+	l = log
+	m = merge
+	o = checkout
+	pl = pull
+	p = push
+	rb = rebase
+	r = remote
+	s = status
+	sw = switch
+
+	### add ###
+	aa = add --all
+	ap = add --patch
+	au = add --update
+
+
+	### branch ###
+	bc = branch --show-current
+	bd = branch -d
+	bD = branch -D
+	bm = branch --merged
+	bnm = branch --no-merged
+	bed = branch --edit-description
+
+
+	#Show branch description
+	bsd = "!f(){ \
+	branch=\"${1:-$(git rev-parse --abbrev-ref HEAD 2>/dev/null)}\";  \
+	git config \"branch.$branch.description\"; \
+	};f"
+
+
+	### commit ###
+	ca = commit --amend
+	cam = commit --amend --message
+	can = commit --amend --no-edit
+	ci = commit --interactive
+	cm = commit --message
+
+
+	### checkout ###
+	co = checkout
+	con = checkout --no-guess
+
+
+	### cherry-pick ###
+	cp = cherry-pick
+	cpa = cherry-pick --abort
+	cpc = cherry-pick --continue
+	cp-nx = cherry-pick --no-commit -x
+
+
+	### log ###
+	lg = log --graph
+	lo = log --oneline
+	lgo = log --graph --oneline
+	lp = log --patch
+	# log with first parent, useful for team branch that only accepts pull requests
+	lfp = log --first-parent
+	# log with items appearing in topological order, i.e. descendant commits are shown before their parents.
+	lt = log --topo-order
+	# log like - we like this summarization our key performance indicators. Also aliased as `log-like`.
+	ll = log --graph --topo-order --date=short --abbrev-commit --decorate --all --boundary --pretty=format:'%Cgreen%ad %Cred%h%Creset -%C(yellow)%d%Creset %s %Cblue[%cn]%Creset %Cblue%G?%Creset'
+	# log like long  - we like this summarization our key performance indicators. Also aliased as `log-like-long`.
+	lll = log --graph --topo-order --date=iso8601-strict --no-abbrev-commit --abbrev=40 --decorate --all --boundary --pretty=format:'%Cgreen%ad %Cred%h%Creset -%C(yellow)%d%Creset %s %Cblue[%cn <%ce>]%Creset %Cblue%G?%Creset'
+
+
+	## ls-files ##
+	ls = ls-files
+	ls-ignored = ls-files --others --i --exclude-standard
+
+
+	### merge ###
+	ma = merge --abort
+	mc = merge --continue
+	me = merge --no-commit --no-ff
+
+
+	### rebase ###
+	rb = rebase
+	rba = rebase --abort
+	rbc = rebase --continue
+	rbs = rebase --skip
+	#rbi = rebase --interactive @{upstream}
+	rbi = "!f() { git rebase -i HEAD~$1; }; f"
+	rbi-root = rebase --interactive --root
+
+
+	### push ###
+	pf = push --force
+	pu = "!git push -u origin $(git branch --show-current)"
+
+	### reset ###
+	rs = reset
+	rsH = reset --hard
+
+	### switch ###
+	swc = switch --create
+
