@@ -43,7 +43,7 @@
 	### commit ###
 	ca = commit --amend
 	cam = commit --amend --message
-	can = commit --amend --no-edit
+	canoe = commit --amend --no-edit
 	ci = commit --interactive
 	cm = commit --message
 
@@ -106,4 +106,8 @@
 
 	### switch ###
 	swc = switch --create
+
+	### other ###
+	b-clean = "!f() { git branch | grep -v "master" | grep -v "main" | grep -v "develop"| grep -v ^* | xargs git branch -D; }; f"
+	full-clean = "!f() { git branch | grep -v "master" | grep -v "main" | grep -v "develop"| grep -v ^* | xargs git branch -D; git remote prune origin;}; f"
 
